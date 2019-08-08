@@ -1,0 +1,14 @@
+D:\Full stack progs\moshe\Cars-API\bin\Debug\netcoreapp2.2\Cars-API.deps.json
+D:\Full stack progs\moshe\Cars-API\bin\Debug\netcoreapp2.2\Cars-API.runtimeconfig.json
+D:\Full stack progs\moshe\Cars-API\bin\Debug\netcoreapp2.2\Cars-API.runtimeconfig.dev.json
+D:\Full stack progs\moshe\Cars-API\bin\Debug\netcoreapp2.2\Cars-API.dll
+D:\Full stack progs\moshe\Cars-API\bin\Debug\netcoreapp2.2\Cars-API.pdb
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.csprojAssemblyReference.cache
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.csproj.CoreCompileInputs.cache
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.RazorAssemblyInfo.cache
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.RazorAssemblyInfo.cs
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.AssemblyInfoInputs.cache
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.AssemblyInfo.cs
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.RazorTargetAssemblyInfo.cache
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.dll
+D:\Full stack progs\moshe\Cars-API\obj\Debug\netcoreapp2.2\Cars-API.pdb
