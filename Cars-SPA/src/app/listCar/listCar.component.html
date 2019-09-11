@@ -1,0 +1,29 @@
+<div class="container mt-2">
+  <button class="btn btn-primary" [routerLink]="['/newcar']">New Vehicle</button>
+  <p>{{makeId |json}}</p>
+
+  <div class="form-group">
+    <label for="make">Make</label>
+    <select name="makeId" id="make" class="form-control" [(ngModel)]="makeId" (change)="onFilterChange()">
+      <option *ngFor="let item of makes" [ngValue]="item.id">{{item.name}}</option>
+    </select>
+  </div>
+  <table class="table table-dark mt-3">
+    <tr class="thead-light">
+      <th>Id</th>
+      <th>Make</th>
+      <th>Model Id</th>
+      <th>Contact Name</th>
+      <th>Is Registered</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of vehicles ">
+      <td>{{item.id}}</td>
+      <td>{{selectMake(item.makeId)}}</td>
+      <td>{{item.modelId}}</td>
+      <td>{{item.contact.name}}</td>
+      <td>{{item.isRegistered}}</td>
+      <td><a [routerLink]="['/vehicles/', item.id]">View</a></td>
+    </tr>
+  </table>
+</div>

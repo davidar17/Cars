@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary mb-4">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -20,8 +20,8 @@
             </button>
             <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
               <li role="menuitem"><a class="dropdown-item" [routerLink]="['/newcar']"
-                  routerLinkActive="router-link-active">Add new car</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+                  [routerLinkActive]="['link-active']">Add New car</a></li>
+              <li role="menuitem"><a class="dropdown-item" [routerLink]="['/vehicles']">All Vehicles</a></li>
               <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
               <li class="divider dropdown-divider"></li>
               <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
