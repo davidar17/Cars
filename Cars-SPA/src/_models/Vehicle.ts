@@ -1,6 +1,3 @@
-import { Make } from './make';
-import { Feature } from 'src/_models/feature';
-import { Model } from './model';
 import { Contact } from './contact';
 
 export class Vehicle {
@@ -10,4 +7,9 @@ export class Vehicle {
     isRegistered?: boolean;
     features: any[] = [];
     contact: Contact;
+}
+
+export class QueryResult {
+    totalItems: number;
+    items: Vehicle[];
 }

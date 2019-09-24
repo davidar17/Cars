@@ -64,10 +64,11 @@ namespace Cars_API.Controllers
         }
 
         [HttpGet("allvehicles")]
-        public async Task<IActionResult> GetVehicles()
+        public async Task<ActionResult<QueryResultDto<VehicleDto>>> GetVehicles([FromQuery]VehicleQueryDto filterDto)
         {
-
-            var vehicles = await _repo.GetVehicles();//_context.Vehicles.Include(x => x.Features);
+           
+            var filter = _mapper.Map<VehicleQuery>(filterDto);
+            var vehicles = await _repo.GetVehicles(filter);//_context.Vehicles.Include(x => x.Features);
             return Ok(vehicles);
         }
 

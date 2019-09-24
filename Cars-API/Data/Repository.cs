@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Cars_API.Dtos;
 using Cars_API.Model;
 using Microsoft.EntityFrameworkCore;
+using Cars_API.Helper;
 // 
 namespace Cars_API.Data
 {
@@ -41,10 +43,33 @@ namespace Cars_API.Data
             return vehicle;
         }
 
-        public async Task<List<VehicleDto>> GetVehicles()
+        public async Task<QueryResultDto<VehicleDto>> GetVehicles(VehicleQuery queryObj)
         {
-            var allVehicles = await _context.Vehicles.Include(x => x.Model).ToListAsync();
-            var response = _mapper.Map<List<VehicleDto>>(allVehicles);
+            var queryresult = new QueryResult<Vehicle>();
+            var allVehicles = _context.Vehicles.Include(x => x.Model).ThenInclude(m => m.Make).Include(x => x.Features).AsQueryable();
+            if (queryObj.MakeId.HasValue)
+            {
+                allVehicles = allVehicles.Where(x => x.Model.MakeId == queryObj.MakeId);
+            }
+            //  Expression<Func<Vehicle, object>> exc;
+            //  Func<Vehicle, string> func = v => v.ContactName;
+
+            Dictionary<string, Expression<Func<Vehicle, object>>> columnMap =
+             new Dictionary<string, Expression<Func<Vehicle, object>>>()
+             {
+                 ["make"] = v => v.Model.Make.Name,
+                 ["model"] = v => v.Model.Name,
+                 ["contactName"] = v => v.ContactName,
+                 ["id"] = v => v.Id
+             };
+
+            //allVehicles = ApplyOrderBy(queryObj, allVehicles, columnMap);
+            queryresult.TotalItems = await allVehicles.CountAsync();
+            allVehicles = allVehicles.ApplyPaging(queryObj);
+            allVehicles = allVehicles.ApplyOrderBy(queryObj, columnMap);
+
+            queryresult.Items = await allVehicles.ToListAsync();
+            var response = _mapper.Map<QueryResultDto<VehicleDto>>(queryresult);
             return response;
         }
 

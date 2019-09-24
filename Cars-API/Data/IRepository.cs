@@ -8,7 +8,7 @@ namespace Cars_API.Data
     public interface IRepository
     {
         Task<VehicleDto> CreateVehicle(VehicleDto newVehicle);
-        Task<List<VehicleDto>> GetVehicles();
+        Task<QueryResultDto<VehicleDto>> GetVehicles(VehicleQuery filter);
         Task<Vehicle> GetVehicle(int id);
         Task<List<Feature>> GetFeatures();
         Task<Vehicle> UpdateVehicle(int id, VehicleDto vehicle);

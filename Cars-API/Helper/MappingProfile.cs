@@ -9,6 +9,8 @@ namespace Cars_API.Mapping
     {
         public MappingProfile()
         {
+            CreateMap(typeof(QueryResult<>),typeof(QueryResultDto<>));
+            CreateMap<VehicleQueryDto, VehicleQuery>();
             CreateMap<Make, MakeDto>();
             CreateMap<Modell, ModelDto>();
             CreateMap<Feature, FeatureDto>();

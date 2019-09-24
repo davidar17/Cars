@@ -1,8 +1,10 @@
-import { Vehicle } from './../_models/Vehicle';
+import { QueryObj } from './../_models/QueryObj';
+
+import { Vehicle, QueryResult } from './../_models/Vehicle';
 import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { Make } from 'src/_models/make';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Feature } from 'src/_models/feature';
 
@@ -37,8 +39,16 @@ export class HttpClientService {
   deleteVehicle(id) {
     return this.httpClient.delete(this.ApiUrl + 'api/delete/' + id);
   }
-  getVehicles(): Observable<Vehicle[]> {
-    return this.httpClient.get<Vehicle[]>(this.ApiUrl + 'api/allvehicles/');
+  getVehicles(filter?: any): Observable<QueryResult> {
+
+    let httpParams = new HttpParams();
+    if (filter) {
+      Object.keys(filter).forEach(element => {
+        httpParams = httpParams.append(element, filter[element]);
+      });
+    }
+
+    return this.httpClient.get<QueryResult>(this.ApiUrl + 'api/allvehicles', { params: httpParams });
   }
 }
 

@@ -9,6 +9,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { PaginationModule } from 'ngx-bootstrap';
+
+
 
 import { UpdateCarComponent } from './updateCar/updateCar.component';
 import { AppComponent } from './app.component';
@@ -30,6 +33,7 @@ const appRoutes: Routes = [
       ListCarComponent
    ],
    imports: [
+      PaginationModule.forRoot(),
       FormsModule,
       BrowserModule,
       HttpClientModule,
